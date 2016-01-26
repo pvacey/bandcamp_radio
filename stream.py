@@ -3,17 +3,19 @@
 import re,json,os,sys
 import time
 import random
+import requests
 
 if (len(sys.argv) < 2):
-    print 'usage: '+sys.argv[0]+' bandcamp_url'
+    print 'a simple command line bandcamp radio - https://github.com/pvacey/bandcamp_radio'
+    print '\nusage: \n    '+sys.argv[0]+' <url>'
+    print '    '+sys.argv[0]+' https://bandcamp.com/tag/indie-rock\n'
     exit()
 url = sys.argv[1]
 
 def play_random_song(the_url):
     #grab the html of the album page
-    html = os.popen('curl -s '+the_url).read()
+    html = requests.get(the_url).text
     #grab album title
-#    tmp = re.findall('current:\s({[^}]+})',html)
     tmp = re.findall('current:\s({.+(?=},)}),',html)
     albumdetails = json.loads(tmp[0])
     title = albumdetails['title']
@@ -40,7 +42,7 @@ def play_random_song(the_url):
 
 # get list of albums
 albums =[]
-tagpage= os.popen('curl -s '+url).read()
+tagpage= requests.get(url).text
 tmp = re.findall('class="item ">[\W\w]+?(?=<a)([\W\w]+?)(?=<\/li)',tagpage)
 for a in tmp:
     a_link = re.findall('href="([^"]+)',a)
