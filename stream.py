@@ -23,7 +23,7 @@ def play_random_song(the_url):
     tmp = re.findall('artist: "([^"]+)"',html)
     artist = tmp[0]
     # grab the array of tracks
-    tmp = re.findall('trackinfo : (\[[^\]]+\])', html)
+    tmp = re.findall('trackinfo\s*:\s*(\[.*}])', html)
     trackinfo = json.loads(tmp[0])
 
     try:
