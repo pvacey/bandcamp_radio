@@ -3,7 +3,7 @@
 A simple script for [bandcamp](https://bandcamp.com) that plays random songs from genre tag pages.
 
 ##Usage
-Works with any bandcamp genre tag page, find these at  [https://bandcamp.com/tags](https://bandcamp.com/tags).  
+Works with any bandcamp genre tag, find these tags at  [https://bandcamp.com/tags](https://bandcamp.com/tags).  
 
 To skip a song press Q or CTRL+C. 
 
@@ -11,7 +11,7 @@ Press CTRL+C twice to exit.
 
 ####Example
 
-    ./stream.py https://bandcamp.com/tag/indie-rock
+    ./stream.py ambient
 
 
 
