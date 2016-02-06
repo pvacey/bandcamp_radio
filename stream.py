@@ -48,7 +48,8 @@ def play_random_song(the_url):
         print 'Artist: '+artist
         print the_url
         print '-------------------------------'
-        cmd = 'mpv \"'+fileurl+'\" --no-video '
+        cmd = 'mpv \"'+fileurl+'\" --no-video --msg-level=cplayer=no,ytdl_hook=no,cache=no,libav/demuxer=no'
+        #cmd = 'mpv \"'+fileurl+'\" --no-video '
         os.system(cmd)
     except:
         print '[ERROR] cannot play song, skipping'
@@ -76,7 +77,10 @@ for a in tmp:
     #print a_link[0]
 '''
 while True:
-    url = albums[random.randrange(len(albums))]
-    #print '[Selecting random album] '+ url
-    play_random_song(url)
-    time.sleep(2)
+    try:
+        url = albums[random.randrange(len(albums))]
+        #print '[Selecting random album] '+ url
+        play_random_song(url)
+        time.sleep(2)
+    except KeyboardInterrupt:
+        break
