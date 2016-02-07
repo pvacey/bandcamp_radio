@@ -48,7 +48,7 @@ def play_random_song(the_url):
         print 'Artist: '+artist
         print the_url
         print '-------------------------------'
-        cmd = 'mpv \"'+fileurl+'\" --no-video --msg-level=cplayer=no,ytdl_hook=no,cache=no,libav/demuxer=no'
+        cmd = 'mpv \"'+fileurl+'\" --no-video --msg-level=cplayer=no,ytdl_hook=no,cache=no,libav/demuxer=no,display-tags=no'
         #cmd = 'mpv \"'+fileurl+'\" --no-video '
         os.system(cmd)
     except:
@@ -83,4 +83,5 @@ while True:
         play_random_song(url)
         time.sleep(2)
     except KeyboardInterrupt:
-        break
+	    print '\n'
+	    break
